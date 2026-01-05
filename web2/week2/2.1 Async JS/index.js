@@ -34,10 +34,17 @@ function sumfromenv() {
 console.log(sumfromenv());
 
 const fs = require("fs");
-
+//synchronus operation
 const content = fs.readFileSync("a.txt", "utf-8");
 console.log(content);
 const contentinb = fs.readFileSync("b.txt", "utf8");
 console.log(contentinb);
-const contentinc = fs.readFile("b.txt", "utf-8");
-console.log(contentinc);
+
+// async operation
+function print(err, data) {
+  console.log(data, "async mode");
+}
+
+fs.readFile("a.txt", "utf-8", print);
+fs.readFile("b.txt", "utf-8", print);
+console.log("Done");
