@@ -35,9 +35,15 @@ console.log(sumfromenv());
 
 const fs = require("fs");
 //synchronus operation
-const content = fs.readFileSync("a.txt", "utf-8");
+const content = fs.readFileSync("a.txt"); //IO Heavy
 console.log(content);
-const contentinb = fs.readFileSync("b.txt", "utf8");
+const inmemory = "this is in memory compuatation no data from external files ";
+console.log(
+  inmemory,
+  "in memory computation will not load first because we are going in synchronous order"
+);
+
+const contentinb = fs.readFileSync("b.txt", "utf8"); // this also works even there is no - in utf8 IO Heavy
 console.log(contentinb);
 
 // async operation
@@ -48,3 +54,9 @@ function print(err, data) {
 fs.readFile("a.txt", "utf-8", print);
 fs.readFile("b.txt", "utf-8", print);
 console.log("Done");
+const inmemorywithasync =
+  "this is in memory compuatation no data from external files ";
+console.log(
+  inmemorywithasync,
+  "in memory computation will  load first because we are going in asynchronous order"
+);
