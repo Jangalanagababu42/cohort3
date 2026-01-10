@@ -1,7 +1,7 @@
 class Rectangle {
   // class
   constructor(width, height, color) {
-    //constructor
+    //constructor -> runs automatically when object created
     this.width = width;
     this.height = height;
     this.color = color;
@@ -18,3 +18,5 @@ class Rectangle {
 const rect = new Rectangle(3, 77, "green"); //obj
 console.log(rect.area()); // calling obj method
 rect.paint();
+console.log(Rectangle.prototype);
+console.log(Object.getOwnPropertyNames(rect.__proto__));
